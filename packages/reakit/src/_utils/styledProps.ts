@@ -79,7 +79,21 @@ export const slide = ifProp(
   prop("slide")
 );
 
-export const scaleWithProps = ifProp("expand", "scale(0.01)");
+export const scaleWithProps = ifProp(
+  "expand",
+  switchProp(
+    "expand",
+    {
+      x: "scaleX(0.01)",
+      "x-left": "scaleX(0.01)",
+      "x-right": "scaleX(0.01)",
+      y: "scaleY(0.01)",
+      "y-top": "scaleY(0.01)",
+      "y-bottom": "scaleY(0.01)"
+    },
+    "scale(0.01)"
+  )
+);
 
 export const originWithProps = withProp(["originX", "originY"], (x, y) =>
   switchProp(
@@ -89,7 +103,13 @@ export const originWithProps = withProp(["originX", "originY"], (x, y) =>
       top: origin(calc("50%", x), calc("100%", y)),
       right: origin(x, calc("50%", y)),
       bottom: origin(calc("50%", x), y),
-      left: origin(calc("100%", x), calc("50%", y))
+      left: origin(calc("100%", x), calc("50%", y)),
+      x: origin(calc("50%", x), y),
+      "x-left": origin("100%", 0),
+      "x-right": origin(0, 0),
+      y: origin(x, calc("50%", y)),
+      "y-top": origin(0, "100%"),
+      "y-bottom": origin(0, 0)
     },
     origin(calc("50%", x), calc("50%", y))
   )

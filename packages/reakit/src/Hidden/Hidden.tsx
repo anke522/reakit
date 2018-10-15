@@ -30,7 +30,16 @@ export interface HiddenProps extends BoxProps {
   hideOnClickOutside?: boolean;
   unmount?: boolean;
   fade?: boolean;
-  expand?: boolean | "center" | Position;
+  expand?:
+    | boolean
+    | "center"
+    | "x"
+    | "x-left"
+    | "x-right"
+    | "y"
+    | "y-top"
+    | "y-bottom"
+    | Position;
   slide?: boolean | Position;
   duration?: string;
   delay?: string;
@@ -190,7 +199,19 @@ Hidden.propTypes = {
   fade: PropTypes.bool,
   expand: PropTypes.oneOfType([
     PropTypes.bool,
-    PropTypes.oneOf(["center", "top", "right", "bottom", "left"])
+    PropTypes.oneOf([
+      "x",
+      "x-left",
+      "x-right",
+      "y",
+      "y-top",
+      "y-bottom",
+      "center",
+      "top",
+      "right",
+      "bottom",
+      "left"
+    ])
   ]),
   slide: PropTypes.oneOfType([
     PropTypes.bool,

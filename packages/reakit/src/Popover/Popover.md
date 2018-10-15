@@ -24,8 +24,7 @@ import { InlineBlock, Popover } from "reakit";
       <Button as={Popover.Toggle} {...popover}>
         Toggle
       </Button>
-      <Popover fade slide expand hideOnClickOutside {...popover}>
-        <Popover.Arrow />
+      <Popover gutter={0} fade expand="y-bottom" hideOnClickOutside {...popover}>
         Click outside to hide
       </Popover>
     </InlineBlock>
